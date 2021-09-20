@@ -5,23 +5,61 @@ import './index.css'
 const Button = props => {
 	return (
 		<button className="btn">
-		button
+		{props.value}
 		</button>
 	);
 }
 
 const Display = props => {
-	return <h1>0</h1>;
+	return (
+		<React.Fragment>
+			<input
+				type="text"
+				className="display" value={props.value}/>
+		</React.Fragment>
+	);
 }
 
 const KeyPad = props => {
-	return <h1>Keys</h1>;
+	return (
+		<React.Fragment>
+			<div className="keypad-row">
+				<Button value="C"/>
+				<Button value="÷"/>
+				<Button value="×"/>
+				<Button value="⌫"/>
+			</div>
+			<div className="keypad-row">
+				<Button value="7"/>
+				<Button value="8"/>
+				<Button value="9"/>
+				<Button value="-"/>
+			</div>
+			<div className="keypad-row">
+				<Button value="4"/>
+				<Button value="5"/>
+				<Button value="6"/>
+				<Button value="+"/>
+			</div>
+			<div className="keypad-row">
+				<Button value="1"/>
+				<Button value="2"/>
+				<Button value="3"/>
+				<Button value="="/>
+			</div>
+			<div className="keypad-row">
+				<Button value="%"/>
+				<Button value="0"/>
+				<Button value="."/>
+			</div>
+		</React.Fragment>
+	);
 }
 
 const Calculator = props => {
 	return (
 		<React.Fragment>
-			<Display />
+			<Display value="0"/>
 			<KeyPad />
 		</React.Fragment>
 	);
