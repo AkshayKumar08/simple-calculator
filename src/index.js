@@ -1,10 +1,10 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 
 const Button = props => {
 	return (
-		<button className="btn">
+		<button className={`${props.class? props.class: "btn"}`}>
 		{props.value}
 		</button>
 	);
@@ -15,53 +15,51 @@ const Display = props => {
 		<React.Fragment>
 			<input
 				type="text"
-				className="display" value={props.value}/>
+				className={props.class}
+				value={props.value}
+				readonly=""/>
 		</React.Fragment>
 	);
 }
 
 const KeyPad = props => {
 	return (
-		<React.Fragment>
-			<div className="keypad-row">
-				<Button value="C"/>
-				<Button value="÷"/>
-				<Button value="×"/>
-				<Button value="⌫"/>
-			</div>
-			<div className="keypad-row">
-				<Button value="7"/>
-				<Button value="8"/>
-				<Button value="9"/>
-				<Button value="-"/>
-			</div>
-			<div className="keypad-row">
-				<Button value="4"/>
-				<Button value="5"/>
-				<Button value="6"/>
-				<Button value="+"/>
-			</div>
-			<div className="keypad-row">
-				<Button value="1"/>
-				<Button value="2"/>
-				<Button value="3"/>
-				<Button value="="/>
-			</div>
-			<div className="keypad-row">
-				<Button value="%"/>
-				<Button value="0"/>
-				<Button value="."/>
-			</div>
-		</React.Fragment>
+		<div className="keypad">
+			<Button class="btn symbol" value="C"/>
+			<Button class="btn symbol" value={<Fragment>&divide;</Fragment>}/>
+			<Button class="btn symbol" value={<Fragment>&times;</Fragment>}/>
+			<Button class="btn symbol" value="⌫"/>
+			
+			<Button value="7"/>
+			<Button value="8"/>
+			<Button value="9"/>
+			<Button class="btn symbol" value="-"/>
+			
+			<Button value="4"/>
+			<Button value="5"/>
+			<Button value="6"/>
+			<Button class="btn symbol" value="+"/>
+			
+			<Button value="1"/>
+			<Button value="2"/>
+			<Button value="3"/>
+			<Button class="btn equals" value="="/>
+			
+			<Button class="btn symbol" value="%"/>
+			<Button value="0"/>
+			<Button value="."/>
+			
+		</div>
 	);
 }
 
 const Calculator = props => {
 	return (
-		<React.Fragment>
-			<Display value="0"/>
+		<div className="calculator">
+			<Display class="display input" value="0"/>
+			<Display class="display output" value="0"/>
 			<KeyPad />
-		</React.Fragment>
+		</div>
 	);
 }
 
@@ -69,7 +67,7 @@ const App = props => {
 	return (
 		<React.Fragment>
 			<h1>Calculator</h1>
-			<Calculator />
+			<Calculator/>
 		</React.Fragment>
 	);
 }
